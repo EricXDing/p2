@@ -1,46 +1,41 @@
 <?php
-  require ('getAllBooks.php')
+  require ('capitalize.php')
 ?>
 
 <!DOCTYPE html>
 <html lang ="en">
 <head>
-
-  <title> </title>
+  <title>Project 2</title>
   <meta charset ='utf-8'>
-
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
 </head>
+
 <body>
-
-  <h1>Foobooks</h1>
-
-  <form method='GET'>
-    <labe for='LKeyword'>Filter by keyword:</label><br>
-    <input type='text' name='keyword' id='LKeyword' value='<?=$keyword?>'><br>
-    <input type='checkbox' name='caseSensitive' <?php if($caseSensitive) echo 'CHECKED';?>>Case Sensitive<br>
-    <input type='submit' class='btn btn-primary btn-small' value='filter books'>
+  <div class = "class1">
+    <h1>Capitalization Tool</h1>
+    <form method='post' id='form1'>
+      <h2>Text</h2>
+Enter text here<br>
+<textarea rows="6" cols="100" name="text1" form="form1"><?=$text?></textarea>
+      <hr>
+      <h2>Capitalization</h2><br>
+        <input type='radio' name='cap' value='true' id = 'style'> All CAPS <br>
+        <input type='radio' name='cap' value='false' id = 'style'> all lowercase <br>
+      <hr>
+      <h2>Style</h2><br>
+        <input type='checkbox' name='Bold' id = 'style1'> Bold <br>
+        <input type='checkbox' name='Italize' id = 'style2'> Italize<br>
+        <input type='checkbox' name='Underline' id = 'style3'> Underline<br>
+      <br>
+        <input type='submit' value='Submit'>
   </form>
-
-
-<?php if(count($books) == 0) : ?>
-    <div>Your keyword did not match any results.</div>
-<?php elseif ($keyword !== ''): ?>
-    <div>You searched for <strong><?=$keyword?></strong>.</div>
-<?php endif; ?>
-
-
-
-
-  <?php foreach ($books as $title => $book) : ?>
-  <div class='book' style='border:1px solid black'>
-          <h2><?=$title?></h2>
-          <h3>Author: <?=$book['author']?></h3>
-          <h3>Published Year: <?=$book['published']?></h3>
-          <img src="<?=$book['cover']?>" alt='<?=$title?>'>
-
+  <hr>
+  <h1>Output</h1><br>
+  <?php if(isset($_POST['Bold'])) echo '<strong>';?>
+  <?php if(isset($_POST['Italize'])) echo '<i>';?>
+  <?php if(isset($_POST['Underline'])) echo '<u>';?>
+    <?=$text?>
   </div>
-<?php endforeach; ?>
-
 
 </body>
 </html>
