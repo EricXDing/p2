@@ -28,8 +28,8 @@ Enter text here (required)<br>
 </div>
 <div>
       <h2>Capitalization</h2><br>
-        <input type='radio' name='cap' value='true' id = 'style'> All CAPS <br>
-        <input type='radio' name='cap' value='false' id = 'style'> all lowercase <br>
+        <input type='radio' name='cap' value='true'> All CAPS <br>
+        <input type='radio' name='cap' value='false'> all lowercase <br>
 </div>
 <div>
       <h2>Style</h2><br>
@@ -38,7 +38,7 @@ Enter text here (required)<br>
         <input type='checkbox' name='Underline' id = 'style3'> Underline<br>
       <br>
         <input type='submit' value='Submit'>
-  </form>
+
 </div>
 </div>
 <hr>
