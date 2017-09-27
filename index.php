@@ -1,5 +1,5 @@
 <?php
-  require ('capitalize.php')
+  require ('capitalize.php');
 ?>
 
 <!DOCTYPE html>
@@ -11,17 +11,27 @@
 </head>
 
 <body>
-  <div class = "class1">
-    <h1>Capitalization Tool</h1>
+<h1>Capitalization Tool</h1>
+<div id ='main'>
+<div>
     <form method='post' id='form1'>
       <h2>Text</h2>
-Enter text here<br>
-<textarea rows="6" cols="100" name="text1" form="form1"><?=$text?></textarea>
-      <hr>
+Enter text here (required)<br>
+<?php if (isset($errors)): ?>
+    <ul>
+      <?php foreach ($errors as $error):?>
+          <li><?=$error?></li>
+      <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+<textarea rows="6" cols="40" name="text" form="form1"><?=$form->sanitize($text)?></textarea>
+</div>
+<div>
       <h2>Capitalization</h2><br>
         <input type='radio' name='cap' value='true' id = 'style'> All CAPS <br>
         <input type='radio' name='cap' value='false' id = 'style'> all lowercase <br>
-      <hr>
+</div>
+<div>
       <h2>Style</h2><br>
         <input type='checkbox' name='Bold' id = 'style1'> Bold <br>
         <input type='checkbox' name='Italize' id = 'style2'> Italize<br>
@@ -29,13 +39,13 @@ Enter text here<br>
       <br>
         <input type='submit' value='Submit'>
   </form>
-  <hr>
+</div>
+</div>
+<hr>
   <h1>Output</h1><br>
   <?php if(isset($_POST['Bold'])) echo '<strong>';?>
   <?php if(isset($_POST['Italize'])) echo '<i>';?>
   <?php if(isset($_POST['Underline'])) echo '<u>';?>
-    <?=$text?>
-  </div>
-
+    <?=$form->sanitize($text)?>
 </body>
 </html>

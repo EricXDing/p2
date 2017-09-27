@@ -1,7 +1,19 @@
 <?php
 
-if(isset($_POST['text1'])){
-  $text = $_POST['text1'];
+require ('form.php');
+use DWA\Form;
+
+$form = new form($_POST);
+$keyword = $form->get('text','');
+
+if($form->isSubmitted()){
+$errors = $form->validate([
+  'text' => 'required'
+]);
+}
+
+if(isset($_POST['text'])){
+  $text = $_POST['text'];
 } else {
   $text = '';
 }
